@@ -1,6 +1,4 @@
-﻿using System.Runtime.Serialization;
-
-namespace stackexample
+﻿namespace stackexample
 {
     public class Stack<T> : IStack<T>
     {
@@ -45,6 +43,10 @@ namespace stackexample
             {
                 top--;
             }
+            else 
+            {
+                throw new EmptyStackException();
+            }
         }
 
         public void Push(T value)
@@ -66,26 +68,6 @@ namespace stackexample
             {
                 return default;
             }
-        }
-    }
-
-    [Serializable]
-    public class CapacityExceededException : Exception
-    {
-        public CapacityExceededException()
-        {
-        }
-
-        public CapacityExceededException(string? message) : base(message)
-        {
-        }
-
-        public CapacityExceededException(string? message, Exception? innerException) : base(message, innerException)
-        {
-        }
-
-        protected CapacityExceededException(SerializationInfo info, StreamingContext context) : base(info, context)
-        {
         }
     }
 }
